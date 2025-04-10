@@ -3,5 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println("asd")
+	var a string
+	fmt.Scan(&a)
+	fmt.Println(a)
 }
