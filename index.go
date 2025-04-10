@@ -3,8 +3,8 @@ package main
 import "fmt"
 
 func main() {
-	var asd string
+	var asd float64
 	fmt.Scan(&asd)
 
-	fmt.Println(asd)
+	fmt.Printf(`%5.f`, asd)
 }
