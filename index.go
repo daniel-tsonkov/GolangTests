@@ -3,6 +3,8 @@ package main
 import "fmt"
 
 func main() {
+	var accauntBalance float64 = 1000
+
 	fmt.Println("Поздравление")
 	fmt.Println("Меню:")
 
