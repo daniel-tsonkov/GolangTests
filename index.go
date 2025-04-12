@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	// var accauntBalance float64 = 1000
+	var accauntBalance float64 = 1000
 
 	fmt.Println("Поздравление")
 	fmt.Println("Меню:")
@@ -19,7 +19,13 @@ func main() {
 
 		fmt.Println("Избор:", choice)
 
-		if choice == 4 {
+		switch choice {
+		case 1:
+			fmt.Println("Баланс по сметка:", accauntBalance)
+		case 2:
+		case 3:
+		case 4:
+			fmt.Println("Чао!!!")
 			return
 		}
 	}
