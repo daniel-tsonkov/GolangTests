@@ -34,8 +34,10 @@ func main() {
 	var accauntBalance, err = getBalanceFromFile()
 
 	if err != nil {
+		fmt.Println("-----------")
 		fmt.Println("ERROR")
 		fmt.Println(err)
+		fmt.Println("-----------")
 	}
 
 	fmt.Println("Поздравление")
