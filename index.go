@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"strconv"
 )
 
 const acountBalanceFile = "balance.txt"
@@ -12,12 +13,15 @@ func writeBalanceToFIle(balance float64) {
 	os.WriteFile(acountBalanceFile, []byte(balanceText), 0644)
 }
 
-func getBalanceFromFile() {
-	os.ReadFile(acountBalanceFile)
+func getBalanceFromFile() float64 {
+	data, _ := os.ReadFile(acountBalanceFile)
+	balanceText, _ := strconv.ParseFloat(string(data), 64)
+
+	return balanceText
 }
 
 func main() {
-	var accauntBalance float64 = 1000
+	var accauntBalance = getBalanceFromFile()
 
 	fmt.Println("Поздравление")
 	fmt.Println("Меню:")
