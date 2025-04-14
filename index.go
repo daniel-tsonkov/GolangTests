@@ -30,7 +30,7 @@ func getBalanceFromFile() (float64, error) {
 	return balanceText, nil
 }
 
-func main() {
+func main() { //fake upload
 	var accauntBalance, err = getBalanceFromFile()
 
 	if err != nil {
