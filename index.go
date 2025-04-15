@@ -31,6 +31,7 @@ func getBalanceFromFile() (float64, error) {
 }
 
 func main() { //fake upload
+	//fake upload 15 apr 2025
 	var accauntBalance, err = getBalanceFromFile()
 
 	if err != nil {
