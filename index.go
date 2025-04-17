@@ -7,64 +7,95 @@ import (
 	"strconv"
 )
 
-const acountBalanceFile = "balance.txt"
-
-func writeBalanceToFIle(balance float64) {
-	balanceText := fmt.Sprint(balance)
-	os.WriteFile(acountBalanceFile, []byte(balanceText), 0644)
-}
+const accountBalanceFile = "balance.txt"
 
 func getBalanceFromFile() (float64, error) {
-	data, err := os.ReadFile(acountBalanceFile)
+	data, err := os.ReadFile(accountBalanceFile)
 
 	if err != nil {
-		return 1000, errors.New("Failed to read file")
+		return 1000, errors.New("Failed to find balance file.")
 	}
 
-	balanceText, err := strconv.ParseFloat(string(data), 64)
+	balanceText := string(data)
+	balance, err := strconv.ParseFloat(balanceText, 64)
 
 	if err != nil {
-		return 1000, errors.New("Failed to parce file")
+		return 1000, errors.New("Failed to parse stored balance value.")
 	}
 
-	return balanceText, nil
+	return balance, nil
 }
 
-func main() { //fake upload
-	//fake upload 15 apr 2025
-	//test upload!!!
-	var accauntBalance, err = getBalanceFromFile()
+func writeBalanceToFile(balance float64) {
+	balanceText := fmt.Sprint(balance)
+	os.WriteFile(accountBalanceFile, []byte(balanceText), 0644)
+}
+
+func main() {
+	var accountBalance, err = getBalanceFromFile()
 
 	if err != nil {
-		fmt.Println("-----------")
 		fmt.Println("ERROR")
 		fmt.Println(err)
-		fmt.Println("-----------")
+		fmt.Println("---------")
+		// panic("Can't continue, sorry.")
 	}
 
-	fmt.Println("Поздравление")
-	fmt.Println("Меню:")
+	fmt.Println("Welcome to Go Bank!")
+
 	for {
-		fmt.Println("1. Баланс по сметката")
-		fmt.Println("2. Депозит")
-		fmt.Println("3. Теглене")
-		fmt.Println("4. Изход")
+		fmt.Println("What do you want to do?")
+		fmt.Println("1. Check balance")
+		fmt.Println("2. Deposit money")
+		fmt.Println("3. Withdraw money")
+		fmt.Println("4. Exit")
 
 		var choice int
-		fmt.Print("Избери вариант: ")
+		fmt.Print("Your choice: ")
 		fmt.Scan(&choice)
 
-		fmt.Println("Избор:", choice)
+		// wantsCheckBalance := choice == 1
 
 		switch choice {
 		case 1:
-			fmt.Println("Баланс по сметка:", accauntBalance)
+			fmt.Println("Your balance is", accountBalance)
 		case 2:
-			writeBalanceToFIle(accauntBalance)
+			fmt.Print("Your deposit: ")
+			var depositAmount float64
+			fmt.Scan(&depositAmount)
+
+			if depositAmount <= 0 {
+				fmt.Println("Invalid amount. Must be greater than 0.")
+				// return
+				continue
+			}
+
+			accountBalance += depositAmount // accountBalance = accountBalance + depositAmount
+			fmt.Println("Balance updated! New amount:", accountBalance)
+			writeBalanceToFile(accountBalance)
 		case 3:
-		case 4:
-			fmt.Println("Чао!!!")
+			fmt.Print("Withdrawal amount: ")
+			var withdrawalAmount float64
+			fmt.Scan(&withdrawalAmount)
+
+			if withdrawalAmount <= 0 {
+				fmt.Println("Invalid amount. Must be greater than 0.")
+				continue
+			}
+
+			if withdrawalAmount > accountBalance {
+				fmt.Println("Invalid amount. You can't withdraw more than you have.")
+				continue
+			}
+
+			accountBalance -= withdrawalAmount // accountBalance = accountBalance + depositAmount
+			fmt.Println("Balance updated! New amount:", accountBalance)
+			writeBalanceToFile(accountBalance)
+		default:
+			fmt.Println("Goodbye!")
+			fmt.Println("Thanks for choosing our bank")
 			return
+			// break
 		}
 	}
 }
