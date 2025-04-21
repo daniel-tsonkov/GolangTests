@@ -27,6 +27,7 @@ func main() {
 	}
 
 	// ... do something awesome with that gathered data!
+	//just upload
 
 	fmt.Println(firstName, lastName, birthdate)
 }
