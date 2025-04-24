@@ -24,11 +24,11 @@ func main() {
 		createdAt: time.Now(),
 	}
 
-	outputUserDetails(appUser)
+	outputUserDetails(&appUser)
 }
 
-func outputUserDetails(u user) {
-	fmt.Println(u.firstName, u.lastName, u.birthDay)
+func outputUserDetails(u *user) {
+	fmt.Println((*u).firstName, (*u).lastName, (*u).birthDay)
 }
 
 func getUserData(promptText string) string {
