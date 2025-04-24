@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"time"
 )
@@ -22,13 +23,16 @@ func (u *user) clearUserName() {
 	u.birthDay = "N/A"
 }
 
-func newUser(firstNmae, lastName, birthdate string) *user {
+func newUser(firstName, lastName, birthdate string) (*user, error) {
+	if firstName == "" || lastName == "" || birthdate == "" {
+		return nil, errors.New("Fill")
+	}
 	return &user{
-		firstName: firstNmae,
+		firstName: firstName,
 		lastName:  lastName,
 		birthDay:  birthdate,
 		createdAt: time.Now(),
-	}
+	}, nil
 }
 
 func main() {
@@ -38,7 +42,11 @@ func main() {
 
 	//var appUser = user
 
-	appUser := newUser(userFirstName, userLastName, userBirthdate)
+	appUser, error := newUser(userFirstName, userLastName, userBirthdate)
+
+	if error != nil {
+		return
+	}
 
 	appUser.outputUserDetails()
 	appUser.clearUserName()
