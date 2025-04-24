@@ -45,6 +45,7 @@ func main() {
 	appUser, error := newUser(userFirstName, userLastName, userBirthdate)
 
 	if error != nil {
+		fmt.Println(error)
 		return
 	}
 
@@ -57,6 +58,6 @@ func main() {
 func getUserData(promptText string) string {
 	fmt.Print(promptText)
 	var value string
-	fmt.Scan(&value)
+	fmt.Scanln(&value)
 	return value
 }
