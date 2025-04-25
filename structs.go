@@ -13,12 +13,17 @@ func main() {
 
 	//var appUser = user
 
-	appUser, error := user.NewUser(userFirstName, userLastName, userBirthdate)
+	appUser, error := user.New(userFirstName, userLastName, userBirthdate)
 
 	if error != nil {
 		fmt.Println(error)
 		return
 	}
+
+	admin := user.NewAdmin("asd@asd.asd", "asdasd")
+
+	admin.OutputUserDetails()
+	admin.ClearUserName()
 
 	appUser.OutputUserDetails()
 	appUser.ClearUserName()
