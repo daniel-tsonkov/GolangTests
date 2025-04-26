@@ -11,4 +11,5 @@ func (str customString) log() {
 func main() {
 	var name customString = "NAME"
 
+	name.log()
 }
