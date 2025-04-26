@@ -9,7 +9,7 @@ import (
 func main() {
 	tittle, content := getNOdeData()
 
-	note.New(tittle, content)
+	userNote, err := note.New(tittle, content)
 
 	if err != nil {
 		fmt.Println(err)

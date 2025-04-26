@@ -2,6 +2,7 @@ package note
 
 import (
 	"errors"
+	"fmt"
 	"time"
 )
 
@@ -11,7 +12,11 @@ type Note struct {
 	createtAt time.Time
 }
 
-func New(tittle, content string) (, error) {
+func (note Note) Display() {
+	fmt.Printf("Your note titled %v has the following content:\n\n%v", note.tittle, note.content)
+}
+
+func New(tittle, content string) (Note, error) {
 	if tittle == "" || content != "" {
 		return Note{}, errors.New("Invalit input")
 	}
