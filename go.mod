@@ -1,3 +1,3 @@
-module example.com/node
+module example.com/note
 
 go 1.21.2
