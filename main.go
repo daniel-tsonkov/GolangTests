@@ -15,6 +15,8 @@ func main() {
 		fmt.Println(err)
 		return
 	}
+
+	userNote.Display()
 }
 
 func getNOdeData() (string, string) {
@@ -27,8 +29,6 @@ func getNOdeData() (string, string) {
 
 func getUserInput(prompt string) string {
 	fmt.Println(prompt)
-	var value string
-	fmt.Scanln(&value)
 
 	return value
 }
