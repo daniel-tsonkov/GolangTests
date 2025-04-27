@@ -7,22 +7,22 @@ import (
 )
 
 type Note struct {
-	tittle    string
+	title     string
 	content   string
 	createtAt time.Time
 }
 
 func (note Note) Display() {
-	fmt.Printf("Your note titled %v has the following content:\n\n%v", note.tittle, note.content)
+	fmt.Printf("Your note titled %v has the following content:\n\n%v", note.title, note.content)
 }
 
-func New(tittle, content string) (Note, error) {
-	if tittle == "" || content != "" {
-		return Note{}, errors.New("Invalit input")
+func New(title, content string) (Note, error) {
+	if title == "" || content == "" {
+		return Note{}, errors.New("invalit input")
 	}
 
 	return Note{
-		tittle:    tittle,
+		title:     title,
 		content:   content,
 		createtAt: time.Now(),
 	}, nil
