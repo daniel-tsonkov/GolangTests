@@ -48,9 +48,9 @@ func main() {
 }
 
 func getNOdeData() (string, string) {
-	title := getUserInput("enter")
+	title := getUserInput("Note title")
 
-	content := getUserInput("enter")
+	content := getUserInput("Note context")
 
 	return title, content
 }
