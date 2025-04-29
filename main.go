@@ -42,17 +42,18 @@ func main() {
 	fmt.Println("Saving the todo successed!")
 
 	userNote.Display()
-	err = userNote.Save()
+	saveData(userNote)
+}
+
+func saveData(data saver) error {
+	err := data.Save()
 
 	if err != nil {
 		fmt.Println("Saving the note failed.")
-		return
+		return err
 	}
 	fmt.Println("Saving the node successed!")
-}
-
-func saveData(data saver) {
-
+	return nil
 }
 
 func getNOdeData() (string, string) {
