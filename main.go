@@ -10,6 +10,10 @@ import (
 	"example.com/note/todo"
 )
 
+type saver interface {
+	Save() error
+}
+
 func main() {
 	tittle, content := getNOdeData()
 	todoText := getUserInput("Todo text: ")
@@ -45,6 +49,10 @@ func main() {
 		return
 	}
 	fmt.Println("Saving the node successed!")
+}
+
+func saveData(data saver) {
+
 }
 
 func getNOdeData() (string, string) {
