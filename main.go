@@ -53,6 +53,13 @@ func main() {
 	outputData(userNote)
 }
 
+func printSomething(value interface{}) {
+	switch value.(type) {
+
+	}
+	fmt.Println(value)
+}
+
 func outputData(data outputtable) error {
 	data.Display()
 	return saveData(data)
