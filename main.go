@@ -37,6 +37,8 @@ func main() {
 		return
 	}
 
+	printSomething(todo)
+
 	userNote, err := note.New(tittle, content)
 
 	if err != nil {
