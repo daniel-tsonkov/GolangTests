@@ -9,9 +9,15 @@ import "fmt"
 // }
 
 func main() {
-	prices := []float64{}
+	hobbies := [3]string{"sports", "Cookies", "Reading"}
+	fmt.Println(hobbies)
 
-	updatedPrices := append(prices, 5.99)
+	fmt.Println(hobbies[0])
+	fmt.Println(hobbies[1:3])
 
-	fmt.Println(updatedPrices)
+	mainHobbie := hobbies[0:2]
+	fmt.Println(mainHobbie[0])
+
+	courseGoals := []string{"Learn Go!", "Learn all"}
+	fmt.Println(courseGoals)
 }
