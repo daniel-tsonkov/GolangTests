@@ -2,11 +2,11 @@ package main
 
 import "fmt"
 
-// type Product struct {
-// 	title string
-// 	id    string
-// 	price float64
-// }
+type Product struct {
+	title string
+	id    string
+	price float64
+}
 
 func main() {
 	hobbies := [3]string{"sports", "Cookies", "Reading"}
@@ -19,5 +19,9 @@ func main() {
 	fmt.Println(mainHobbie[0])
 
 	courseGoals := []string{"Learn Go!", "Learn all"}
+	fmt.Println(courseGoals)
+
+	courseGoals[1] = "Learn details"
+	courseGoals = append(courseGoals, "Learn all")
 	fmt.Println(courseGoals)
 }
