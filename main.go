@@ -3,8 +3,8 @@ package main
 import "fmt"
 
 type Product struct {
-	title string
 	id    string
+	title string
 	price float64
 }
 
@@ -24,4 +24,19 @@ func main() {
 	courseGoals[1] = "Learn details"
 	courseGoals = append(courseGoals, "Learn all")
 	fmt.Println(courseGoals)
+
+	products := []Product{
+		{
+			"first-product",
+			"A First Product",
+			12.99,
+		},
+		{
+			"second-product",
+			"A Second Product",
+			110.99,
+		},
+	}
+
+	fmt.Println(products)
 }
