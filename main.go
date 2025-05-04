@@ -17,4 +17,8 @@ func main() {
 	// delete element
 	delete(websites, "key1")
 	fmt.Println(websites)
+
+	// update element
+	websites["key3"] = "value33"
+	fmt.Println(websites)
 }
