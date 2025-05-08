@@ -3,22 +3,18 @@ package main
 import "fmt"
 
 func main() {
-	// kreate key; value
-	websites := map[string]string{
-		"key1": "value1",
-		"key2": "value2",
+	number := []int{1, 2, 3, 4}
+
+	doubled := doubleNumbers(&number)
+
+	fmt.Println(doubled)
+}
+
+func doubleNumbers(numbers *[]int) []int {
+	dNumbers := []int{}
+	for _, value := range *numbers {
+		dNumbers = append(dNumbers, value*2)
 	}
-	fmt.Println(websites["key1"])
 
-	// add key; value
-	websites["key3"] = "value3"
-	fmt.Println(websites["key3"])
-
-	// delete element
-	delete(websites, "key1")
-	fmt.Println(websites)
-
-	// update element
-	websites["key3"] = "value33"
-	fmt.Println(websites)
+	return dNumbers
 }
