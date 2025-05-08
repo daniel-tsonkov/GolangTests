@@ -2,6 +2,8 @@ package main
 
 import "fmt"
 
+type transformFn func(int) int
+
 func main() {
 	number := []int{1, 2, 3, 4}
 
@@ -10,7 +12,7 @@ func main() {
 	fmt.Println(doubled)
 }
 
-func transformNumbers(numbers *[]int, transform func(int) int) []int {
+func transformNumbers(numbers *[]int, transform transformFn) []int {
 	dNumbers := []int{}
 	for _, value := range *numbers {
 		dNumbers = append(dNumbers, transform(value))
