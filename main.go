@@ -21,6 +21,10 @@ func transformNumbers(numbers *[]int, transform transformFn) []int {
 	return dNumbers
 }
 
+func getTranformenFunction() transformFn {
+	return double
+}
+
 func double(number int) int {
 	return number * 2
 }
