@@ -7,9 +7,11 @@ type transformFn func(int) int
 func main() {
 	number := []int{1, 2, 3, 4}
 
-	doubled := transformNumbers(&number, triple)
+	transformed := transformNumbers(&number, func(number int) int {
+		return number * 2
+	})
 
-	fmt.Println(doubled)
+	fmt.Println(transformed)
 }
 
 func transformNumbers(numbers *[]int, transform transformFn) []int {
