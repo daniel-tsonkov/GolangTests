@@ -1,17 +1,24 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type transformFn func(int) int
 
 func main() {
 	number := []int{1, 2, 3, 4}
 
+	double := createTransformer(2)
+
 	transformed := transformNumbers(&number, func(number int) int {
 		return number * 2
 	})
 
+	doubled := transformNumbers(&number, double)
+
 	fmt.Println(transformed)
+	fmt.Println(doubled)
 }
 
 func transformNumbers(numbers *[]int, transform transformFn) []int {
@@ -33,4 +40,10 @@ func double(number int) int {
 
 func triple(number int) int {
 	return number * 3
+}
+
+func createTransformer(factor int) func(int) int {
+	return func(number int) int {
+		return number * factor
+	}
 }
