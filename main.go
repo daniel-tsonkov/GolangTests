@@ -1,23 +1,12 @@
 package main
 
-import "fmt"
-
 func main() {
-	// numbers := []int{1, 10, 15}
-	// sum := sumup(numbers)
-	sum := sumup(1, 10, 15)
+	prices := []float64{10, 20, 30}
+	taxRates := []float64{0, 0.7, 0.1, 0.15}
 
-	fmt.Println(sum)
-}
+	result := make(map[float64][]float64)
 
-// func sumup(numbers []int) int {
-func sumup(numbers ...int) int {
+	for index, taxRate := range taxRates {
 
-	sum := 0
-
-	for _, val := range numbers {
-		sum += val
 	}
-
-	return sum
 }
