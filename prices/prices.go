@@ -8,6 +8,9 @@ type TaxIncludedPriceJob struct {
 	TaxIncludedPrices map[string]float64
 }
 
+func (job TaxIncludedPriceJob) LoadData() {
+}
+
 func (job TaxIncludedPriceJob) Process() {
 	result := make(map[string]float64)
 
