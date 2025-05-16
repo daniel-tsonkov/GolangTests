@@ -22,8 +22,18 @@ func (job TaxIncludedPriceJob) LoadData() {
 
 	scanner := bufio.NewScanner(file)
 
-	for scanner.Scan() {
+	lines := []string{}
 
+	for scanner.Scan() {
+		lines = append(lines, scanner.Text())
+	}
+
+	err = scanner.Err()
+
+	if err != nil {
+		fmt.Println("Ciuld not read the content of the file")
+		file.Close()
+		return
 	}
 }
 
