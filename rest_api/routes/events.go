@@ -78,4 +78,6 @@ func updateEvent(context *gin.Context) {
 		context.JSON(http.StatusBadRequest, gin.H{"Message": "Could not parse request data."})
 		return
 	}
+
+	updatedEvent.ID = eventId
 }
