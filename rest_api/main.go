@@ -26,11 +26,12 @@ func createEvent(context *gin.Context) {
 	err := context.ShouldBindJSON(&event)
 
 	if err != nil {
-		context.JSON(http.StatusBadRequest, gin.H{"Message": "Could not parse re`uest data."})
+		context.JSON(http.StatusBadRequest, gin.H{"Message": "Could not parse request data."})
 		return
 	}
 
 	event.ID = 1
 	event.UserID = 1
+	event.Save()
 	context.JSON(http.StatusCreated, gin.H{"message": "Event created!", "event": event})
 }
