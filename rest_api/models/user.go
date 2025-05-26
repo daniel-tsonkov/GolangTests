@@ -1,6 +1,8 @@
 package models
 
 import (
+	"errors"
+
 	"example.com/m/v2/db"
 	"example.com/m/v2/utils"
 )
@@ -47,7 +49,14 @@ func (u User) ValidateCredentials() error {
 	err := row.Scan(&retrivePasswor)
 
 	if err != nil {
-		return err
+		return errors.New("Credentials invalid")
 	}
 
+	passworIsValid := utils.CheckPasswordHash(u.Password, retrivePasswor)
+
+	if !passworIsValid {
+		return errors.New("Credentials invalid")
+	}
+
+	return nil
 }

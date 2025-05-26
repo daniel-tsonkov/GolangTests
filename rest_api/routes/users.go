@@ -34,4 +34,13 @@ func login(context *gin.Context) {
 		context.JSON(http.StatusBadRequest, gin.H{"Message": "Could not parse request data."})
 		return
 	}
+
+	err = user.ValidateCredentials()
+
+	if err != nil {
+		context.JSON(http.StatusBadRequest, gin.H{"Message": "Could not authenticate user."})
+		return
+	}
+
+	context.JSON(http.StatusOK, gin.H{"Message": "Login successful!"})
 }
