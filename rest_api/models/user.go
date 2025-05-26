@@ -9,7 +9,7 @@ type User struct {
 }
 
 func (u User) Save() error {
-	query := "INSERT INTO users(email, password) VALUE(?, ?)"
+	query := "INSERT INTO users(email, password) VALUES(?, ?)"
 	stmt, err := db.DB.Prepare(query)
 
 	if err != nil {
@@ -17,4 +17,15 @@ func (u User) Save() error {
 	}
 
 	defer stmt.Close()
+
+	result, err := stmt.Exec(u.Email, u.Password)
+
+	if err != nil {
+		return err
+	}
+
+	userId, err := result.LastInsertId()
+
+	u.ID = userId
+	return err
 }
