@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"example.com/m/v2/models"
+	"example.com/m/v2/utils"
 	"github.com/gin-gonic/gin"
 )
 
@@ -42,5 +43,12 @@ func login(context *gin.Context) {
 		return
 	}
 
-	context.JSON(http.StatusOK, gin.H{"Message": "Login successful!"})
+	token, err := utils.GenerateToken(user.Email, user.ID)
+
+	if err != nil {
+		context.JSON(http.StatusInternalServerError, gin.H{"Message": "Could not authenticate user."})
+		return
+	}
+
+	context.JSON(http.StatusOK, gin.H{"Message": "Login successful!", "token": token})
 }
