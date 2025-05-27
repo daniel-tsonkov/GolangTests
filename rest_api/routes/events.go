@@ -5,6 +5,7 @@ import (
 	"strconv"
 
 	"example.com/m/v2/models"
+	"example.com/m/v2/utils"
 	"github.com/gin-gonic/gin"
 )
 
@@ -44,15 +45,22 @@ func createEvent(context *gin.Context) {
 		return
 	}
 
+	err := utils.VerifyToken(token)
+
+	if token == "" {
+		context.JSON(http.StatusUnauthorized, gin.H{"message": "Not Authorized"})
+		return
+	}
+
 	var event models.Event
-	err := context.ShouldBindJSON(&event)
+	err = context.ShouldBindJSON(&event)
 
 	if err != nil {
 		context.JSON(http.StatusBadRequest, gin.H{"message": "Could not parse request data."})
 		return
 	}
 
-	event.ID = 1
+	// event.ID = 1
 	event.UserID = 1
 	err = event.Save()
 
